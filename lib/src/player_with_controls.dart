@@ -13,10 +13,14 @@ class PlayerWithControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ChewieController chewieController = ChewieController.of(context);
+    final Size size = MediaQuery.of(context).size;
+    final orientation = MediaQuery.of(context).orientation;
+    final bool isLandscape = orientation == Orientation.landscape;
 
     return Center(
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: size.width,
+        height: isLandscape ? size.height:null,
         child: AspectRatio(
           aspectRatio:
               chewieController.aspectRatio ?? _calculateAspectRatio(context),
